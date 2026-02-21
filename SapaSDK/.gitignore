@@ -1,0 +1,14 @@
+# Build artifacts
+*.exe
+*.a
+*.so
+*.dll
+*.dylib
+*.o
+*.obj
+*.log
+*.tmp
+*.bak
+
+# Ignore build directories
+out/
