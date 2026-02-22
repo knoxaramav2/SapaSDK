@@ -1,5 +1,11 @@
 #pragma once
 
+#ifdef HH_DEF_DT
+const float HH_DT = HH_DEF_DT;
+#else
+const float TIME_INTERVAL = 0.03f;
+#endif
+
 //Precaculated potential reversal potential constants for Hodgkin-Huxley model
 #ifdef HH_DEF_Cm
 const float HH_CM = HH_DEF_Cm;
@@ -10,7 +16,7 @@ const float HH_CM = 0.01f;
 #ifdef HH_DEF_ENa
 const float HH_ENa = HH_DEF_ENa;
 #else
-const float HH_Ena = 55.17f;
+const float HH_ENa = 55.17f;
 #endif
 
 #ifdef HH_DEF_EK
