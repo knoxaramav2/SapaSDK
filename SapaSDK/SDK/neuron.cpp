@@ -6,6 +6,10 @@ namespace SAPA {
 	{
 	}
 
+	INeuron::INeuron(POINT point) : _point(point)
+	{
+	}
+
 	INeuron::~INeuron()
 	{
 	}
