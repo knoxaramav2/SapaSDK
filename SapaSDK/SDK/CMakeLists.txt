@@ -12,8 +12,9 @@ PUBLIC
 target_sources(SAPA_SDK
 PRIVATE
 	neuron.cpp
+	structure.cpp
 PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
-)
+ )
 

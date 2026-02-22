@@ -2,6 +2,14 @@
 
 namespace SAPA {
 
+	INeuron::INeuron()
+	{
+	}
+
+	INeuron::~INeuron()
+	{
+	}
+
 	Neuron::Neuron()
 	{
 
