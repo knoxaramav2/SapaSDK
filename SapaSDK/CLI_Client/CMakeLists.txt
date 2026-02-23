@@ -1,4 +1,4 @@
-﻿message(">> BUILDING CLI ${CMAKE_CURRENT_SOURCE_DIR}")
+﻿message(">> BUILDING CLI @ ${CMAKE_CURRENT_SOURCE_DIR}")
 
 add_executable (CLI_Client)
 

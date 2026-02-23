@@ -1,6 +1,6 @@
 #include "sim_core.h"
 
-namespace SAPA {
+namespace SAPA::SIMCORE {
 
 	SimCore::SimCore()
 	{

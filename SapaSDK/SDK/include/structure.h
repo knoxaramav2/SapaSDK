@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace SAPA
+namespace SAPA::SDK
 {
 
 	class IDendrite {

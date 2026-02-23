@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-namespace SAPA
+namespace SAPA::SDK
 {
 	IDendrite::IDendrite(INeuron* source, INeuron* target) 
 		: _source(source), _target(target)

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace SAPA {
+namespace SAPA::SDK {
 
 	struct POINT {
 		float x, y, z;

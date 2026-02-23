@@ -1,12 +1,13 @@
 message(">> BUILDING SimCore @ ${CMAKE_CURRENT_SOURCE_DIR}")
 
-add_library (SIM_CORE SHARED)
+add_library (SIM_CORE STATIC)
 
 #Include directories
 target_include_directories(SIM_CORE
 PUBLIC
 	include
 	SAPA_SDK
+	SAPA_LANG
 )
 
 #Inlcude Sources

@@ -1,0 +1,21 @@
+# A basic test script for generating a simple neural circuit.
+
+#Configure IO dimensions
+Config.Inputs = 4
+Config.Outputs = 1
+
+#Config structure properties
+Config.Plasticity = false
+
+# TODO Configuration for HH constants
+# HH_CM = 0.01
+# ...
+
+# Define neuron definitions
+
+Define Neuron As DemoNeuron {
+	point = (0, 1.1, 20)
+
+}
+
+

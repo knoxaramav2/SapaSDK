@@ -1,6 +1,6 @@
 #include "neuron.h"
 
-namespace SAPA {
+namespace SAPA::SDK {
 
 	INeuron::INeuron()
 	{

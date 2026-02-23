@@ -4,48 +4,49 @@
 
 #include <cmath>
 
-namespace SAPA::HH {
+namespace SAPA::SDK {
 
 	enum ION_TYPE {
 		CALCIUM, CHLORIDE, POTASSIUM, SODIUM
 	};
 
-	//(De)Activation channel dynamics
+	// Boltzmann equations for ion channel dynamics
+
 	float calc_An(float voltage) {
-		return (0.01 * (voltage + 50.0)) / (1.0 - exp((-(voltage + 50.0) / 10.0)));
+		return (float)(0.01 * (voltage + 50.0f)) / (1.0f - exp((-(voltage + 50.0f) / 10.0f)));
 	}
 
 	float calc_Bn(float voltage) {
-		return 0.125 * exp(-(voltage + 60.0) / 80.0);
+		return 0.125f * exp(-(voltage + 60.0f) / 80.0f);
 	}
 
 	float calc_Am(float voltage) {
-		return (0.1 * (voltage + 35.0)) / (1.0 - exp((-(voltage + 35.0) / 10.0)));
+		return (0.1 * (voltage + 35.0f)) / (1.0f - exp((-(voltage + 35.0f) / 10.0f)));
 	}
 
 	float calc_Bm(float voltage) {
-		return 4.0f * exp(-0.0556*(voltage + 60));
+		return 4.0f * exp(-0.0556f*(voltage + 60.0f));
 	}
 
 	float calc_Ah(float voltage) {
-		return 0.07f * exp(-0.05f * (voltage + 60.0));
+		return 0.07f * exp(-0.05f * (voltage + 60.0f));
 	}
 
 	float calc_Bh(float voltage) {
-		return 1.0f / (1.0f + exp(-0.1f * (voltage + 30.0)));
+		return 1.0f / (1.0f + exp(-0.1f * (voltage + 30.0f)));
 	}
 
-	//deltas 
-	float calc_dndt(float voltage, float n) {
-		return ((calc_An(voltage) * (1.0f - n)) - (calc_Bn(voltage) * n)) * TIME_INTERVAL;
+	//delta helpers
+	float calc_dndt(float voltage, float kActivation) {
+		return ((calc_An(voltage) * (1.0f - kActivation)) - (calc_Bn(voltage) * kActivation)) * TIME_INTERVAL;
 	}
 
-	float calc_dmdt(float voltage, float m) {
-		return ((calc_Am(voltage) * (1.0f - m)) - (calc_Bm(voltage) * m)) * TIME_INTERVAL;
+	float calc_dmdt(float voltage, float naActivation) {
+		return ((calc_Am(voltage) * (1.0f - naActivation)) - (calc_Bm(voltage) * naActivation)) * TIME_INTERVAL;
 	}
 
-	float calc_dhdt(float voltage, float h) {
-		return ((calc_Ah(voltage) * (1.0f - h)) - (calc_Bh(voltage) * h)) * TIME_INTERVAL;
+	float calc_dhdt(float voltage, float naDeactivation) {
+		return ((calc_Ah(voltage) * (1.0f - naDeactivation)) - (calc_Bh(voltage) * naDeactivation)) * TIME_INTERVAL;
 	}
 
 	float calc_dvdt(float i0, float i1, float iExt) {
@@ -54,10 +55,10 @@ namespace SAPA::HH {
 
 
 	//calculations
-	float calc_current(float voltage, float n, float m, float h) {
+	float calc_current(float voltage, float kActivation, float naActivation, float naDeactivation) {
 		return (
-			(HH_GNa*powf(m, 3) * h * (voltage-HH_ENa)) -
-			(HH_GK*powf(n, 4) * (voltage-HH_EK)) -
+			(HH_GNa*powf(naActivation, 3) * naDeactivation * (voltage-HH_ENa)) -
+			(HH_GK*powf(kActivation, 4) * (voltage-HH_EK)) -
 			(HH_GL*(voltage-HH_EL))
 			);
 	}

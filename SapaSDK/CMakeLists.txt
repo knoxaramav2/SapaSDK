@@ -13,5 +13,8 @@ set(CMAKE_CXX_STANDARD 23)
 project ("SapaSDK")
 
 add_subdirectory ("SDK")
+add_subdirectory ("SimCore")
 add_subdirectory ("CLI_Client")
+add_subdirectory ("SapaLang")
+add_subdirectory ("Tests")
 

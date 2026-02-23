@@ -1,10 +1,10 @@
 #pragma once
 
-namespace SAPA {
+namespace SAPA::SIMCORE {
 	class SimCore
 	{
 	public:
 		SimCore();
 		~SimCore();
-	}
+	};
 }
